@@ -39,8 +39,8 @@ All colors MUST be HSL.
     --radius: 0.75rem;
     
     --timer-bg: 140 50% 25%;
-    --score-home: 210 100% 50%;
-    --score-away: 0 100% 50%;
+    --score-home: 0 85% 55%;
+    --score-away: 210 100% 55%;
 
     --sidebar-background: 0 0% 98%;
 
@@ -89,8 +89,8 @@ All colors MUST be HSL.
     --ring: 140 60% 45%;
     
     --timer-bg: 140 50% 15%;
-    --score-home: 210 100% 60%;
-    --score-away: 0 100% 60%;
+    --score-home: 0 85% 60%;
+    --score-away: 210 100% 65%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;

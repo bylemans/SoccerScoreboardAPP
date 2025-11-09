@@ -13,6 +13,8 @@ const Index = () => {
   const [currentQuarter, setCurrentQuarter] = useState(1);
   const [timeLeft, setTimeLeft] = useState(15 * 60); // 15 minutes in seconds
   const [isRunning, setIsRunning] = useState(false);
+  const [homeName, setHomeName] = useState("HOME");
+  const [awayName, setAwayName] = useState("AWAY");
   const [quarterScores, setQuarterScores] = useState<QuarterScore[]>([
     { home: 0, away: 0 },
     { home: 0, away: 0 },
@@ -177,9 +179,15 @@ const Index = () => {
         {/* Scores */}
         <div className="grid grid-cols-2 gap-4">
           {/* Home Team */}
-          <Card className="p-4">
+          <Card className="p-4 border-score-home border-2">
             <div className="text-center space-y-3">
-              <h3 className="text-sm font-semibold text-muted-foreground">HOME</h3>
+              <input
+                type="text"
+                value={homeName}
+                onChange={(e) => setHomeName(e.target.value.slice(0, 20).toUpperCase())}
+                className="text-sm font-semibold text-center bg-transparent border-none focus:outline-none focus:ring-1 focus:ring-score-home rounded px-2 py-1 w-full text-muted-foreground"
+                placeholder="HOME TEAM"
+              />
               <div className="text-5xl font-bold text-score-home">
                 {getTotalScore("home")}
               </div>
@@ -207,9 +215,15 @@ const Index = () => {
           </Card>
 
           {/* Away Team */}
-          <Card className="p-4">
+          <Card className="p-4 border-score-away border-2">
             <div className="text-center space-y-3">
-              <h3 className="text-sm font-semibold text-muted-foreground">AWAY</h3>
+              <input
+                type="text"
+                value={awayName}
+                onChange={(e) => setAwayName(e.target.value.slice(0, 20).toUpperCase())}
+                className="text-sm font-semibold text-center bg-transparent border-none focus:outline-none focus:ring-1 focus:ring-score-away rounded px-2 py-1 w-full text-muted-foreground"
+                placeholder="AWAY TEAM"
+              />
               <div className="text-5xl font-bold text-score-away">
                 {getTotalScore("away")}
               </div>
