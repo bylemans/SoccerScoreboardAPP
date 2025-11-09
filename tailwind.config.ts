@@ -47,6 +47,13 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        timer: {
+          bg: "hsl(var(--timer-bg))",
+        },
+        score: {
+          home: "hsl(var(--score-home))",
+          away: "hsl(var(--score-away))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
