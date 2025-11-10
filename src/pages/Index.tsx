@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Play, Pause, RotateCcw, SkipForward, Plus, Minus, Monitor } from "lucide-react";
+import { Play, Pause, RotateCcw, SkipForward, Plus, Minus } from "lucide-react";
 import { toast } from "sonner";
+import soccerBall from "@/assets/soccer-ball.png";
 
 interface QuarterScore {
   home: number;
@@ -146,7 +147,7 @@ const Index = () => {
       <div className="w-full max-w-md space-y-4">
         {/* Title */}
         <div className="flex items-center justify-center gap-3 mb-2">
-          <Monitor className="h-8 w-8 text-primary" />
+          <img src={soccerBall} alt="Soccer ball" className="h-8 w-8" />
           <h1 className="text-3xl font-bold text-foreground">Scoreboard</h1>
         </div>
         
@@ -189,7 +190,7 @@ const Index = () => {
         {/* Scores */}
         <div className="grid grid-cols-2 gap-4">
           {/* Home Team */}
-          <Card className="p-4 border-score-home border-2">
+          <Card className="p-4 border-score-home border-2 bg-white">
             <div className="text-center space-y-3">
               <input
                 type="text"
@@ -222,7 +223,7 @@ const Index = () => {
           </Card>
 
           {/* Away Team */}
-          <Card className="p-4 border-score-away border-2">
+          <Card className="p-4 border-score-away border-2 bg-white">
             <div className="text-center space-y-3">
               <input
                 type="text"
@@ -256,7 +257,7 @@ const Index = () => {
         </div>
 
         {/* Quarter Breakdown */}
-        <Card className="p-4">
+        <Card className="p-4 bg-white">
           <h3 className="text-sm font-semibold mb-3 text-center">Quarter Breakdown</h3>
           <div className="grid grid-cols-4 gap-2 text-xs">
             {quarterScores.map((quarter, index) => (
