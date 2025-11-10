@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Play, Pause, RotateCcw, SkipForward, Plus, Minus } from "lucide-react";
 import { toast } from "sonner";
+import soccerBallIcon from "@/assets/soccer-ball-icon.png";
 
 interface QuarterScore {
   home: number;
@@ -146,6 +147,7 @@ const Index = () => {
       <div className="w-full max-w-md space-y-4">
         {/* Title */}
         <div className="flex items-center justify-center gap-3 mb-2">
+          <img src={soccerBallIcon} alt="Soccer ball" className="h-8 w-8" />
           <h1 className="text-3xl font-bold text-foreground">Scoreboard APP</h1>
         </div>
         
