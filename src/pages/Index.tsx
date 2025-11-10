@@ -167,10 +167,9 @@ const Index = () => {
             </Button>
             <Button
               size="lg"
-              variant="secondary"
               onClick={nextQuarter}
               disabled={currentQuarter >= 4}
-              className="gap-2"
+              className="gap-2 bg-primary hover:bg-primary/90 text-primary-foreground"
             >
               <SkipForward className="h-5 w-5" />
               <span>Next</span>
@@ -190,7 +189,7 @@ const Index = () => {
         {/* Scores */}
         <div className="grid grid-cols-2 gap-4">
           {/* Home Team */}
-          <Card className="p-4 border-score-home border-2 bg-white">
+          <Card className="p-4 border-score-home border-2 bg-timer-bg">
             <div className="text-center space-y-3">
               <input
                 type="text"
@@ -223,7 +222,7 @@ const Index = () => {
           </Card>
 
           {/* Away Team */}
-          <Card className="p-4 border-score-away border-2 bg-white">
+          <Card className="p-4 border-score-away border-2 bg-timer-bg">
             <div className="text-center space-y-3">
               <input
                 type="text"
@@ -257,7 +256,7 @@ const Index = () => {
         </div>
 
         {/* Quarter Breakdown */}
-        <Card className="p-4 bg-white">
+        <Card className="p-4 bg-timer-bg">
           <h3 className="text-sm font-semibold mb-3 text-center">Quarter Breakdown</h3>
           <div className="grid grid-cols-4 gap-2 text-xs">
             {quarterScores.map((quarter, index) => (
