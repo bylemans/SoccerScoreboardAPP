@@ -16,7 +16,7 @@ export default defineConfig(({ mode }) => ({
     mode === "development" && componentTagger(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.ico", "robots.txt", "soccer-ball-icon.png"],
+      includeAssets: ["favicon.ico", "robots.txt", "soccer-ball-icon.png", "APPicon.png"],
       manifest: {
         name: "Scoreboard APP",
         short_name: "Scoreboard",
@@ -27,19 +27,19 @@ export default defineConfig(({ mode }) => ({
         orientation: "portrait",
         icons: [
           {
-            src: "./APPicon.png",
+            src: "APPicon.png",
             sizes: "192x192",
             type: "image/png",
             purpose: "any maskable"
           },
           {
-            src: "./APPicon.png",
+            src: "APPicon.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "any maskable"
           },
           {
-            src: "./APPicon.png",
+            src: "APPicon.png",
             sizes: "1024x1024",
             type: "image/png",
             purpose: "any maskable"
