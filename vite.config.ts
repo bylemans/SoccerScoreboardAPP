@@ -27,14 +27,20 @@ export default defineConfig(({ mode }) => ({
         orientation: "portrait",
         icons: [
           {
-            src: "./soccer-ball-icon.png",
+            src: "./APPicon.png",
             sizes: "192x192",
             type: "image/png",
             purpose: "any maskable"
           },
           {
-            src: "./soccer-ball-icon.png",
+            src: "./APPicon.png",
             sizes: "512x512",
+            type: "image/png",
+            purpose: "any maskable"
+          },
+          {
+            src: "./APPicon.png",
+            sizes: "1024x1024",
             type: "image/png",
             purpose: "any maskable"
           }

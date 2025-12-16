@@ -161,7 +161,7 @@ const Index = () => {
       <div className="w-full max-w-md space-y-4">
         {/* Title */}
         <div className="flex items-center justify-center gap-3 mb-2">
-          <span className="text-3xl">⚽</span>
+          <img src="/SoccerScoreboardAPP/APPicon.png" alt="Soccer ball" className="h-10 w-10" />
           <h1 className="text-3xl font-bold text-foreground">Scoreboard APP</h1>
         </div>
         
