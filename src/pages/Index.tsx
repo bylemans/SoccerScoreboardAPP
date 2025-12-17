@@ -162,8 +162,8 @@ const Index = () => {
         {/* Title */}
         <div className="flex items-center justify-center gap-3 mb-2">
           <img
-            src={`${import.meta.env.BASE_URL}APPicon.png`}
-            alt="Scoreboard app icon"
+            src={`${import.meta.env.BASE_URL}soccer-ball-icon.png`}
+            alt="Soccer ball"
             className="h-10 w-10"
           />
           <h1 className="text-3xl font-bold text-foreground">Scoreboard APP</h1>
