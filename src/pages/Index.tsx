@@ -13,6 +13,7 @@ const Index = () => {
   const [currentQuarter, setCurrentQuarter] = useState(1);
   const [timeLeft, setTimeLeft] = useState(15 * 60); // 15 minutes in seconds
   const [isRunning, setIsRunning] = useState(false);
+  const [endTime, setEndTime] = useState<number | null>(null); // Timestamp when timer should end
   const [homeName, setHomeName] = useState("HOME");
   const [awayName, setAwayName] = useState("AWAY");
   const [quarterScores, setQuarterScores] = useState<QuarterScore[]>([
@@ -28,35 +29,63 @@ const Index = () => {
     // Create audio context for alarm
     const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
     if (AudioContext) {
-      const audioContext = new AudioContext();
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
-      
       audioRef.current = new Audio();
     }
   }, []);
 
+  // Timer effect using timestamps for background accuracy
   useEffect(() => {
     let interval: NodeJS.Timeout;
     
-    if (isRunning && timeLeft > 0) {
-      interval = setInterval(() => {
-        setTimeLeft((prev) => {
-          if (prev <= 1) {
-            setIsRunning(false);
-            playAlarm();
-            toast.error("Time's up!", {
-              description: `Quarter ${currentQuarter} has ended`,
-            });
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
+    if (isRunning && endTime) {
+      const updateTimer = () => {
+        const now = Date.now();
+        const remaining = Math.max(0, Math.ceil((endTime - now) / 1000));
+        
+        if (remaining <= 0) {
+          setTimeLeft(0);
+          setIsRunning(false);
+          setEndTime(null);
+          playAlarm();
+          toast.error("Time's up!", {
+            description: `Quarter ${currentQuarter} has ended`,
+          });
+        } else {
+          setTimeLeft(remaining);
+        }
+      };
+      
+      updateTimer(); // Update immediately
+      interval = setInterval(updateTimer, 100); // Check more frequently for accuracy
     }
 
     return () => clearInterval(interval);
-  }, [isRunning, timeLeft, currentQuarter]);
+  }, [isRunning, endTime, currentQuarter]);
+
+  // Handle visibility change to update timer when app comes back to foreground
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (!document.hidden && isRunning && endTime) {
+        const now = Date.now();
+        const remaining = Math.max(0, Math.ceil((endTime - now) / 1000));
+        
+        if (remaining <= 0) {
+          setTimeLeft(0);
+          setIsRunning(false);
+          setEndTime(null);
+          playAlarm();
+          toast.error("Time's up!", {
+            description: `Quarter ${currentQuarter} has ended`,
+          });
+        } else {
+          setTimeLeft(remaining);
+        }
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, [isRunning, endTime, currentQuarter]);
 
   const playAlarm = () => {
     // Very strong vibration when timer ends
@@ -131,6 +160,7 @@ const Index = () => {
       setCurrentQuarter((prev) => prev + 1);
       setTimeLeft(15 * 60);
       setIsRunning(false);
+      setEndTime(null);
       toast.success(`Moving to Quarter ${currentQuarter + 1}`);
     } else {
       toast.info("Game complete! Reset to start a new game.");
@@ -142,6 +172,7 @@ const Index = () => {
     setCurrentQuarter(1);
     setTimeLeft(15 * 60);
     setIsRunning(false);
+    setEndTime(null);
     setQuarterScores([
       { home: 0, away: 0 },
       { home: 0, away: 0 },
@@ -153,6 +184,13 @@ const Index = () => {
 
   const toggleTimer = () => {
     vibrate(75); // Medium pulse
+    if (!isRunning) {
+      // Starting timer - calculate end timestamp
+      setEndTime(Date.now() + timeLeft * 1000);
+    } else {
+      // Pausing timer - clear end timestamp
+      setEndTime(null);
+    }
     setIsRunning(!isRunning);
   };
 
