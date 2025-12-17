@@ -318,8 +318,8 @@ const Index = () => {
             {quarterScores.map((quarter, index) => (
               <div
                 key={index}
-                className={`p-2 rounded-md text-center ${
-                  index + 1 === currentQuarter ? "bg-primary text-primary-foreground" : "bg-muted"
+                className={`p-2 rounded-md text-center bg-muted ${
+                  index + 1 === currentQuarter ? "border-2 border-primary" : ""
                 }`}
               >
                 <div className="font-semibold mb-1">Q{index + 1}</div>
