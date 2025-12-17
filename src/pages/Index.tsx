@@ -164,7 +164,7 @@ const Index = () => {
           <img
             src={`${import.meta.env.BASE_URL}soccer-ball-icon.png`}
             alt="Soccer ball"
-            className="h-10 w-10"
+            className="h-10 w-10 brightness-0 invert"
           />
           <h1 className="text-3xl font-bold text-foreground">Scoreboard APP</h1>
         </div>
