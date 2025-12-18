@@ -198,7 +198,7 @@ const Index = () => {
     <div className="min-h-screen bg-background dark p-4 flex items-center justify-center overflow-hidden touch-none fixed inset-0">
       <div className="w-full max-w-md space-y-4">
         {/* Title */}
-        <div className="flex items-center justify-center gap-3 mb-2 border-2 border-primary rounded-md p-2">
+        <div className="flex items-center justify-center gap-3 mb-2 bg-timer-bg rounded-md p-2">
           <img
             src={`${import.meta.env.BASE_URL}soccer-ball-icon.png`}
             alt="Soccer ball"
