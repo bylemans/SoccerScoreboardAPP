@@ -198,7 +198,7 @@ const Index = () => {
     <div className="min-h-screen bg-background dark p-4 flex items-center justify-center overflow-hidden touch-none fixed inset-0">
       <div className="w-full max-w-md space-y-4">
         {/* Title */}
-        <div className="flex items-center justify-center gap-3 mb-2">
+        <div className="flex items-center justify-center gap-3 mb-2 border-2 border-primary rounded-md p-2">
           <img
             src={`${import.meta.env.BASE_URL}soccer-ball-icon.png`}
             alt="Soccer ball"
@@ -217,15 +217,16 @@ const Index = () => {
             <Button
               size="lg"
               onClick={toggleTimer}
-              className="bg-accent hover:bg-accent/90 text-accent-foreground"
+              className="w-24 gap-2 bg-accent hover:bg-accent/90 text-accent-foreground"
             >
               {isRunning ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
+              <span>{isRunning ? "Pause" : "Play"}</span>
             </Button>
             <Button
               size="lg"
               onClick={nextQuarter}
               disabled={currentQuarter >= 4}
-              className="gap-2 bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="w-24 gap-2 bg-primary hover:bg-primary/90 text-primary-foreground"
             >
               <SkipForward className="h-5 w-5" />
               <span>Next</span>
@@ -234,7 +235,7 @@ const Index = () => {
               size="lg"
               variant="destructive"
               onClick={resetGame}
-              className="gap-2"
+              className="w-24 gap-2"
             >
               <RotateCcw className="h-5 w-5" />
               <span>Reset</span>
